@@ -26,15 +26,15 @@
         <tbody>
         <tr>
             <td>{{data.citation}}</td>
-            <td></td>
+            <td>{{data.citation|quote}}</td>
         </tr>
         <tr>
             <td>{{data.title}}</td>
-            <td></td>
+            <td>{{data.title|withoutH}}</td>
         </tr>
         <tr>
             <td>{{data.someText}}</td>
-            <td></td>
+            <td>{{data.someText|firsLetterUp}}</td>
         </tr>
         </tbody>
     </table>

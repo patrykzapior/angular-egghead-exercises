@@ -1,9 +1,29 @@
 'use strict';
 var app = angular.module('app', []);
 
-//add quote filter
-//add withoutH filter
-//add firsLetterUp filter
+
+app.filter('quote',function(){
+    return function(text){
+        return '"'+text+'"';
+    }
+});
+app.filter('withoutH', function () {
+    return function(text){
+        var x = text.replace('H','');
+        return x.replace('h','');
+    }
+});
+
+app.filter('firsLetterUp', function(){
+    return function(text){
+        var array = text.split(' ');
+        for (var i=0;i<array.length;i++){
+            array[i]=array[i].charAt(0).toUpperCase() + array[i].substring(1);
+        }
+        return array.join(' ');
+
+    }
+});
 
 app.controller('FilterCtrl', function ($scope)
 {
