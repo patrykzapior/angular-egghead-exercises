@@ -9,8 +9,8 @@ app.filter('quote',function(){
 });
 app.filter('withoutH', function () {
     return function(text){
-        var x = text.replace('H','');
-        return x.replace('h','');
+        var x = text.replace(/H/g,'');
+        return x.replace(/h/g,'');
     }
 });
 
@@ -21,9 +21,15 @@ app.filter('firsLetterUp', function(){
             array[i]=array[i].charAt(0).toUpperCase() + array[i].substring(1);
         }
         return array.join(' ');
-
     }
 });
+
+app.controller('upperCaseCtrl', function($scope){
+    $scope.toUpper = function(text){
+        return text.toUpperCase();
+    }
+});
+
 
 app.controller('FilterCtrl', function ($scope)
 {
