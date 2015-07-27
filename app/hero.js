@@ -2,11 +2,6 @@
 
 var app = angular.module('app', []);
 
-//app.controller("AppCtrl", function(){
-//    var app = this;
-//    app.message("Hello");
-//});
-
 
 app.directive("hero", function(){
     return{
@@ -25,6 +20,6 @@ app.directive("mask", function(){
 app.directive("superhero", function(){
     return{
         restrict: "E",
-        template: "<div class='relative-position'>....</div>"
+        template: "<div class='relative-position'><hero></hero><mask></mask></div>"
     }
 });
