@@ -48,7 +48,9 @@
 
             <div class="row">
                 <div class="col-md-offset-1 col-md-10">
-                    <!--here you are supposed to add correct directives...-->
+                    <ship-sender custom-check="checkMyBoat(boat, currentConditions)" conditions="{{weatherConditions.getCurrentConditions()}}"></ship-sender>
+                    <ship-sender custom-check="checkMyBoat(boat, currentConditions)" conditions="{{weatherConditions.getCurrentConditions()}}"></ship-sender>
+                    <ship-sender custom-check="checkMyBoat(boat, currentConditions)" conditions="{{weatherConditions.getCurrentConditions()}}"></ship-sender>
                 </div>
             </div>
         </div>
