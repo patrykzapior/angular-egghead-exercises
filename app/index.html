@@ -14,7 +14,7 @@
     </div>
     <div class="text-center">
         <!-- add SumCtrl -->
-        <div class="col-md-6">
+        <div class="col-md-6" ng-controller="SumCtrl">
             <div class="form-group col-md-6">
                 <label for="firstNumberSum" class="label label-default col-md-12">a</label>
                 <input id="firstNumberSum" type="number" class="form-control" ng-model="firstNumberSum">
@@ -24,15 +24,15 @@
                 <input id="secondNumberSum" type="number" class="form-control" ng-model="secondNumberSum">
             </div>
             <div class="form-group ">
-                <button class="btn btn-success form-control">
+                <button class="btn btn-success form-control" ng-click="SumCtrl.addition(firstNumberSum,secondNumberSum)">
                     Sum
                 </button>
-                <h3> <!--result--></h3>
+                <h3></h3>
             </div>
 
         </div>
         <!-- add SubCtrl -->
-        <div class="col-md-6">
+        <div class="col-md-6" ng-controller="SubCtrl">
             <div class="form-group col-md-6">
                 <label for="firstNumberSub" class="label label-default col-md-12">a</label>
                 <input id="firstNumberSub" type="number" class="form-control" ng-model="firstNumberSub">
@@ -41,10 +41,10 @@
                 <label for="secondNumberSub" class="label label-default col-md-12">b</label>
                 <input id="secondNumberSub" type="number" class="form-control" ng-model="secondNumberSub">
             </div>
-            <button class="btn btn-danger form-control">
+            <button class="btn btn-danger form-control" ng-click="SubCtrl.subtraction(firstNumberSub,secondNumberSub)">
                 Substraction
             </button>
-            <h3><!--result--></h3>
+            <h3></h3>
         </div>
 
     </div>
