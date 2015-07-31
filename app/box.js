@@ -12,8 +12,11 @@ app.controller('BoxCtrl', function ($scope)
 app.directive('box', function ()
 {
     return {
-        restrict: 'E', scope: {
-            color: '=', size: '@', open: '&'
+        restrict: 'E',
+        scope: {
+            color: '=',
+            size: '@',
+            open: '&'
         },
 
         templateUrl: 'boxTemplate.html',
