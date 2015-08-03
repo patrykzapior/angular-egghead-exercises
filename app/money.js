@@ -7,7 +7,7 @@
     {
         return {
             restrict: 'E',
-            transclude:true,
+            transclude: true,
             scope: {
                 forWhat: '@', howMany: '='
             }, templateUrl: 'moneyTemplate.html',

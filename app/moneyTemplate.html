@@ -1,8 +1,8 @@
 <label for="devote" class="label label-default">How much to devote</label>
 
-<select id="devote" ng-options="proposal for proposal in proposals" ng-model="proposal" class="form-control form-group"></select>
+<select ng-model="howMany" id="devote" ng-options="proposal for proposal in proposals" class="form-control form-group" >{{howMany}}</select>
 <div class="text-center">
-    <button id="toggle" class="btn btn-default"  ng-model="forWhat" ng-click="toogleContent()">{{forWhat || "For poor pets" }}</button>
-    <!--here display content from index.html--><div ng-transclude></div>
-    <strong id="message" ng-if="isContentVisible" ng-show="isContentVisible">{{takeMyMoney}}</strong>
+    <button id="toggle" class="btn btn-default"  ng-click="toogleContent()" >{{forWhat || "For poor pets"}}</button>
+    <div ng-transclude></div>
+    <strong id="message" ng-if="isContentVisible">{{takeMyMoney}}</strong>
 </div>
