@@ -7,16 +7,22 @@
     {
         return {
             restrict: 'E',
-
+            transclude:true,
             scope: {
                 forWhat: '@', howMany: '='
-            }, templateUrl: 'moneyTemplate.html', link: function (scope)
+            }, templateUrl: 'moneyTemplate.html',
+            link: function (scope)
             {
                 scope.proposals = [10, 20, 30, 40, 50, 60];
                 scope.howMany = scope.proposals[0];
                 scope.takeMyMoney = 'Shut up and take my money!';
                 scope.isContentVisible = false;
-            }
+
+                scope.toogleContent = function(){
+                    scope.isContentVisible = !scope.isContentVisible;
+                }
+            },
+
         };
     });
 })();
