@@ -20,7 +20,7 @@ app.directive("alarm", function(){
         scope: {
             addRed: '&',
             addYellow: '&',
-            addGreen: '&',
+            addGreen: '&'
         },
     }
 });
