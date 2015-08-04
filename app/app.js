@@ -5,6 +5,14 @@
     var app = angular.module('app', []);
 
     //add routing
+    app.config(function ($routeProvider){
+        $routeProvider.when('/',
+            {
+                templateUrl: "home.html",
+                controller: "RouteCtrl"
+            }
+        )
+    })
 
     app.controller('RouteCtrl', function ($scope)
     {
