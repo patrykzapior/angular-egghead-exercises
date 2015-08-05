@@ -7,10 +7,14 @@
     app.config(function ($routeProvider)
     {
         $routeProvider.when('/', {
-            templateUrl: 'views/product.html', controller: 'catchErrorCtrl'
+            templateUrl: 'views/product.html',
+            controller: 'catchErrorCtrl'
         });
         $routeProvider.when('/order', {
-            templateUrl: 'views/order.html'
+            templateUrl: 'views/order.html',
+            resolve: {
+                error: error
+            }
         });
         $routeProvider.when('/displayOrder', {
             templateUrl: 'views/order.html'
@@ -38,14 +42,25 @@
 
         $scope.rejectProduct = {};
 
-        $scope.class = 'alert alert-danger';
-        $scope.message = 'You give wrong data';
-
-        $scope.class = 'alert alert-success';
-        $scope.message = 'You give correct data';
-
-
+        $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
+            if(rejection.quantity === undefined || rejection.price === undefined){
+                $scope.class = 'alert alert-danger';
+                $scope.message = 'You give wrong data';
+                $scope.rejectProduct.cost = 0;
+            } else {
+                $scope.rejectProduct.name = rejection.name;
+                $scope.rejectProduct.cost = rejection.price * rejection.quantity;
+                $scope.class = 'alert alert-success';
+                $scope.message = 'You give correct data';
+            }
+            $location.path('/displayOrder');
+        })
     });
 
+    var error = function ($q){
+        var defer = $q.defer();
+        defer.reject(productCatch);
+        return defer.promise;
+    }
 
 })();
