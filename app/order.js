@@ -14,16 +14,22 @@ app.factory('Order', function ($q)
         },
 
         getItem: function (index)
-        {
 
+        {
+            var defer = $q.defer();
+            defer.resolve(names[index]);
+            return defer.promise;
         },
 
         getQuantity: function (index)
         {
-
+            var defer = $q.defer();
+            defer.resolve(quantities[index])
+            return defer.promise;
         }
     };
 });
+
 app.controller('orderCtrl', function ($scope, $timeout, Order)
 {
     var index = 0;
@@ -46,9 +52,15 @@ app.controller('orderCtrl', function ($scope, $timeout, Order)
         }
     };
 
-
     $scope.success = function ()
     {
+        Order.getItem(index).then(function(data){
+            $scope.orders.name.push(data);
+        })
 
+        Order.getQuantity(index).then(function(data){
+            $scope.orders.quantity.push(data)
+        })
+        index++;
     };
 });
