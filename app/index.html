@@ -5,18 +5,32 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
-<body ng-app="wayApp">
-<div class="container">
+<body ng-app="app">
+<div class="container" ng-controller="shopCtrl as shop">
     <div class="page-header">
-        <h1>Choose
-            <small>the correct way</small>
-        </h1>
+        <h1>Test</h1>
     </div>
-    <error></error>
-    <ng-view></ng-view>
+    <div class="col-md-3">
+        <label class="label label-success col-md-12">Nazwa produktu: </label>
+        <input type="text" class="form-control" ng-model="shop.name">
+        <h3 ng-if="shop.isClicked">{{shop.name}}</h3>
+    </div>
+    <div class="col-md-3">
+        <label class="label label-success col-md-12">Ilość: </label>
+        <input type="number" class="form-control"  ng-model="shop.count"><br>
+        <h3 ng-if="shop.isClicked">{{shop.count}}</h3>
+    </div>
+    <div class="col-md-3">
+        <label class="label label-success col-md-12">Cena: </label>
+        <input type="number" class="form-control"  ng-model="shop.price"><br>
+        <h3 ng-if="shop.isClicked">{{shop.price | currency}}</h3>
+    </div>
+    <div>
+        <button class="btn btn-success" ng-click="shop.myFun(shop.count,shop.price)">OK</button>
+        <h2>Do zapłaty: {{shop.x | currency}}</h2>
+    </div>
 </div>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="way.js"></script>
 </body>
 </html>
