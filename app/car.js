@@ -47,7 +47,7 @@ app.provider('partsList', function ()
     };
 });
 
-app.controller('CarCtrl', function (partsList, $timeout)
+app.controller('CarCtrl', function (partsList, $timeout, $injector)
 {
     var ctrl = this;
     ctrl.lists = partsList.lists;
@@ -56,29 +56,46 @@ app.controller('CarCtrl', function (partsList, $timeout)
 
     ctrl.chooseCarPart = function ()
     {
-        if (ctrl.data.part !== undefined) {
-            ctrl.carPart = ctrl.data.part;
-            ctrl.returnMessage = '';
-            ctrl.show = true;
-        }
+
+            if (ctrl.data.part !== undefined) {
+                ctrl.carPart = ctrl.data.part;
+                ctrl.returnMessage = '';
+                ctrl.show = true;
+            }
     };
 
     ctrl.checkNow = function ()
     {
-        $timeout(function ()
-        {
-            //complete function
-
-            ctrl.result = true;
-        }, 10);
+            $timeout(function ()
+            {
+                $injector.invoke(function(partsList) {
+                    if (partsList.set(ctrl.carPart)) {
+                        ctrl.returnMessage = 'This part is available and is very cheap';
+                    }
+                    else {
+                        ctrl.returnMessage = 'This part is NOT available and is very expensive...'
+                    }
+                    ctrl.result = true;
+                });
+            }, 10);
     };
     ctrl.wait = function ()
     {
-        $timeout(function ()
-        {
-            //complete function
 
-            ctrl.result = true;
-        }, 1800);
+        $timeout(function ()
+            {
+                $injector.invoke(function(partsList)
+                {
+                    if (ctrl.lists !== undefined)
+                    {
+                        ctrl.lists.enable = true;
+                        if (ctrl.lists.enable === true)
+                        {
+                            ctrl.returnMessage = 'This part is available and is very cheap';
+                        }
+                    }
+                });
+                ctrl.result = true;
+            }, 1800);
     };
 });
