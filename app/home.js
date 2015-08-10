@@ -1,18 +1,30 @@
 'use strict';
 var homeApp = angular.module('homeApp', []);
 
-// add homeApp.provider 
-
-// add homeApp.config 
-
-// remove factory 
-homeApp.factory('Home', function() {
+homeApp.provider('Home', function() {
     var exampleNum = 67;
+    var color;
     return {
-        color: 'red',
-        number: exampleNum % 2 ? 100 : 99
+
+        setColor: function(value){
+            color = value;
+        },
+        setNumber: function(value){
+            exampleNum = value;
+        },
+
+        $get: function(){
+            return {
+                color: color,
+                number: exampleNum % 2 ? 100 : 99
+            }
+        },
     };
 });
+homeApp.config(function (HomeProvider){
+    HomeProvider.setColor("yellow");
+    HomeProvider.setNumber(67);
+})
 
 homeApp.controller('HomeCtrl', function (Home)
 {
