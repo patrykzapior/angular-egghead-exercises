@@ -26,31 +26,41 @@ journeyApp.controller('JourneyCtrl', function ($scope, $rootScope)
 
     $rootScope.$on('$routeChangeStart', function ()
     {
-        // set start message
-
+        $scope.start = "The mission was started!";
     });
     $rootScope.$on('$routeChangeSuccess', function (event, current)
     {
 
         if (undefined !== current.locals.loadData) {
-            // set mission
+            console.log(current.locals.loadData)
+            if(current.locals.loadData.space === 'Kitchen'){
+                $scope.mission = "to make dinner";
+            }else {
+                $scope.mission = "light a campfire";
+            }
         }
     });
 });
 
 var StartCtrl = journeyApp.controller('StartCtrl', function ($scope, $route, $location, $timeout)
 {
-    // set alert message
+    $scope.goHome = function (){
+        $location.path("/home");
+    }
+
+    $scope.goForest = function () {
+        $location.path("/forest");
+    }
 });
 
 journeyApp.controller('HomeCtrl', function ($scope, loadData)
 {
-    // set controller message
+    $scope.message = loadData.message;
 });
 
 journeyApp.controller('ForestCtrl', function ($scope, loadData)
 {
-    // set controller message
+    $scope.message = loadData.message;
 });
 
 StartCtrl.loadHome = function ($q, $timeout)
