@@ -19,7 +19,7 @@ songApp.factory('Song', function ()
     };
 });
 
-songApp.controller('SongCtrl', function ($scope, $injector)
+songApp.controller('SongCtrl', function ($injector)
 {
     var ctrl = this;
 
