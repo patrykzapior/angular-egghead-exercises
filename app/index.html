@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
-<body ng-app="phoneApp" ng-controller="PhoneCtrl">
+<body ng-app="phoneApp" ng-controller="PhoneCtrl as ph">
 <div class="container">
     <div class="page-header">
         <h1>Call Me
@@ -14,21 +14,21 @@
     </div>
     <div class="col-md-offset-4">
         <div class="form-group col-md-3">
-            <select class="form-control" ng-model="selectedPerson.name">
-                <option ng-repeat="person in phoneBook">{{person.name}}</option>
+            <select class="form-control" ng-model="ph.selectedPerson.name">
+                <option ng-repeat="person in ph.phoneBook">{{person.name}}</option>
             </select>
         </div>
         <div class="form-group">
-            <button class="btn btn-default" ng-click="showPhone()">
-                <strong ng-hide="phone">Give me the phone!</strong>
-                <strong ng-show="phone">I don't need a phone.</strong>
+            <button class="btn btn-default" ng-click="ph.showPhone()">
+                <strong ng-hide="ph.isShow">Give me the phone!</strong>
+                <strong ng-show="ph.isShow">I don't need a phone.</strong>
             </button>
         </div>
     </div>
     <div class="col-md-12">
-        <div class="text-center" ng-click="call()">
-            <div class="form-group btn btn-default" ng-show="phone">
-                <p>{{selectedPerson.number}}</p>
+        <div class="text-center" ng-click="ph.call()">
+            <div class="form-group btn btn-default" ng-show="ph.isShow">
+                <p>{{ph.selectedPerson.number}}</p>
                 <img src="assets/phone.png">
             </div>
         </div>
