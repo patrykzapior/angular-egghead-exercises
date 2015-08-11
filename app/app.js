@@ -35,35 +35,38 @@ app.config(function ($routeProvider, $provide)
     });
 });
 
-app.controller('SetCtrl', function ($scope, promises)
+app.controller('SetCtrl', function (promises)
 {
-    $scope.set = function (value)
+    var SC = this;
+    SC.set = function (value)
     {
         if (value && value.success && value.unSuccess) {
-            promises.set(value.success, value.unSuccess);
+            promises.SC.set(value.success, value.unSuccess);
         }
     };
 });
 
 
-app.controller('AppCtrl', function ($scope, promises)
+app.controller('AppCtrl', function (promises)
 {
-    $scope.get = function ()
+    var AC = this;
+    AC.get = function ()
     {
         promises.getSuccess().then(function (result)
         {
-            $scope.success = result;
+            AC.success = result;
         });
     };
 });
 
-app.controller('UnSuccessCtrl', function ($scope, promises)
+app.controller('UnSuccessCtrl', function (promises)
 {
-    $scope.getUnSuccess = function ()
+    var UC = this;
+    UC.getUnSuccess = function ()
     {
-        promises.getUnSuccess().catch(function (result)
+        promises.UC.getUnSuccess().catch(function (result)
         {
-            $scope.unSuccess = result;
+            UC.unSuccess = result;
         });
     };
 });
