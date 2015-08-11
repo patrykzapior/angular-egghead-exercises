@@ -36,37 +36,34 @@ app.config(function ($routeProvider, $provide)
 });
 
 app.controller('SetCtrl', function (promises)
-{
-    var SC = this;
-    SC.set = function (value)
+{   var ctrl = this;
+    ctrl.set = function (value)
     {
         if (value && value.success && value.unSuccess) {
-            promises.SC.set(value.success, value.unSuccess);
+            promises.set(value.success, value.unSuccess);
         }
     };
 });
 
 
-app.controller('AppCtrl', function (promises)
-{
-    var AC = this;
-    AC.get = function ()
+app.controller('AppCtrl', function ( promises)
+{   var ctrl = this;
+    ctrl.get = function ()
     {
         promises.getSuccess().then(function (result)
         {
-            AC.success = result;
+            ctrl.success = result;
         });
     };
 });
 
 app.controller('UnSuccessCtrl', function (promises)
-{
-    var UC = this;
-    UC.getUnSuccess = function ()
+{   var ctrl = this;
+    ctrl.getUnSuccess = function ()
     {
-        promises.UC.getUnSuccess().catch(function (result)
+        promises.getUnSuccess().catch(function (result)
         {
-            UC.unSuccess = result;
+            ctrl.unSuccess = result;
         });
     };
 });
@@ -77,6 +74,6 @@ app.directive('resolveSuccessPromise', function ()
         scope: {},
         restrict: 'E',
         controller: 'UnSuccessCtrl as unSuccessCtrl',
-        template: '<div class="form-group">\n    <button class="btn btn-danger" ng-click="getUnSuccess()"> Get un success value from directive</button>\n    <span ng-if="unSuccess">\n        <p class="form-group">\n            Your un success value is: <span class="text-danger">{{unSuccess}}</span>\n        </p>\n    </span>\n</div>'
+        template: '<div class="form-group">\n    <button class="btn btn-danger" ng-click="unSuccessCtrl.getUnSuccess()"> Get un success value from directive</button>\n    <span ng-if="unSuccessCtrl.unSuccess">\n        <p class="form-group">\n            Your un success value is: <span class="text-danger">{{unSuccessCtrl.unSuccess}}</span>\n        </p>\n    </span>\n</div>'
     };
 });
