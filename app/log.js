@@ -29,6 +29,9 @@ app.controller('displayLog', function ($scope, $location, $log)
         $scope.pageY = event.pageY;
         $scope.eventId = Number(event.toElement.id);
 
+        if (3 === $scope.eventId || 7 === $scope.eventId) {
+            $location.path('/check')
+        }
     };
 });
 

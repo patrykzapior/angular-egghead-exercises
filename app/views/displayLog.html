@@ -1,10 +1,14 @@
 <div class="text-center">
     <div class="col-md-offset-4 col-md-4">
-        <div id="button" ng-repeat="item in list">
-            <button class="btn-block"> Number . message <!--replace this message--></button>
+        <div id="button" ng-repeat="item in list track by $index">
+            <button ng-class="addClass($index + 1)" id="{{$index + 1}}"
+                    class="btn-block" ng-click="display($event)">
+                        {{$index + 1}}. {{item}}
+            </button>
         </div>
     </div>
     <div class="col-md-3">
         <div id="alertMessage" class="alert-success" ng-if="pageX">You click button on x:{{pageX}} and y:{{pageY}}</div>
     </div>
 </div>
+

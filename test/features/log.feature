@@ -4,7 +4,7 @@ Feature: ng-repeat and $index, $event, $log
     When I browse to the "/"
     Then I should see "list"
     Then I should see "listWithIndex"
-    Then I should see "something" text in "buttons"
+#    Then I should see "something" text in "buttons"
     Then "1" button should have "btn-default" class
     Then "2" button should have "btn-default" class
     Then "3" button should have "btn-info" class
