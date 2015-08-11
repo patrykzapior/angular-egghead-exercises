@@ -3,6 +3,11 @@
 
     <div class="form-group">
         <!--add directive-->
+        <my-container title="Blaaaa">
+            <div ng-repeat="element in list">
+                <my-component name="This directive is simple component {{element}}"></my-component>
+            </div>
+        </my-container>
     </div>
     <div class="btn-group">
         <button id="addComponentToContainerButton" class="btn btn-success" ng-click="add()"><i class="glyphicon glyphicon-plus-sign"></i> Add component to

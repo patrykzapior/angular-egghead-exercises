@@ -1,8 +1,9 @@
 <div class="col-md-offset-4 col-md-4">
     <h3 class="text-info">You choose <strong class="text-success">components</strong></h3>
 
-    <div class="form-group">
+    <div class="form-group" ng-repeat="element in list">
         <!--add directive-->
+        <my-component name="This directive is simple component {{element}}"></my-component>
     </div>
     <div class="btn-group">
         <a href="#/" class="btn btn-default"><i class="glyphicon glyphicon-arrow-left"></i> Back</a>
