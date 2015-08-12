@@ -22,7 +22,7 @@ mailApp.controller('mailCtrl', function () {
         click = !click;
     }
 
-    this.send = function(mail){
+    this.send = function(){
         //complete function
     }
 
