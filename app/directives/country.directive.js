@@ -5,7 +5,8 @@
             restrict: 'E',
             scope: {},
             controller: 'countryCtrl as countryCtrl',
-            templateUrl: 'templates/country.tpl.html'
+            templateUrl: 'templates/country.tpl.html',
+            transclude: true
         };
     });
 })();

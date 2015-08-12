@@ -7,6 +7,7 @@
             replace: true,
             controller: 'detailsCtrl as detailsCtrl',
             templateUrl: 'templates/detail.tpl.html',
+            require: ["^country","^state"],
             link: function (scope, element, attrs, contrls) {
                 scope.$watch(function () {
                     return [contrls[0].chooseCountry, contrls[1].chooseState];
