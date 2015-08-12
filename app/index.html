@@ -5,21 +5,22 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
-<body ng-app="fridgeApp" ng-controller="FridgeCtrl as ctrl">
+<body ng-app="mailApp" ng-controller="mailCtrl as ctrl">
 <div class="container">
     <div class="page-header text-center">
-        <h1>What's in your fridge?
-            <small>Show me!</small>
+        <h1>Mail sender
+            <small>yolo!</small>
         </h1>
     </div>
-    <div class="col-md-offset-4 col-md-4 panel panel-body panel-info text-center">
-        <!--add  name of a friends and the contents of their fridge -->
-        <div ng-repeat-start="thing in ctrl.list"></div>
-            <p class="page-header"><strong>{{thing.id}}. {{thing.name}}</strong></p>
-            <div data-ng-repeat="item in thing.fridge">{{item.name}} x {{item.count}}</div>
-        <div ng-repeat-end=""></div>
+    <div class="col-md-4 panel panel-body panel-info text-center">
+        <div ng-repeat="thing in ctrl.list" ng-model="thing" class="btn" ng-click="ctrl.fun(thing)"><p><strong>{{thing}}</strong></p></div>
     </div>
-</div>
+    <div class="col-md-4 panel panel-body panel-info text-center">
+        <p>Message to: {{ctrl.x}}<p>
+        <textarea placeholder="Message..." width="500px" style="margin: 0px; width: 354px; height: 104px;"></textarea>
+        <button ng-click="ctrl.send()">Send</button>
+    </div>
+   </div>
 <script src="bower_components/angular/angular.js"></script>
 <script src="fridge.js"></script>
 </body>
