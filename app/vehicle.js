@@ -28,6 +28,7 @@ app.directive('car', function () {
             this.emergencyBrake = false;
         },
         link: function (scope, element, attrs, clientCtrl) {
+
         },
         template: '<div class="col-md-6">' +
             '<img class="text-center" src="assets/car.png">' +
@@ -59,19 +60,23 @@ app.directive('bus', function () {
 app.directive('audi', function () {
     return {
         restrict: 'E',
+        require: ["^car","^vehicle"],
         link: function (scope, element, attrs, ctrls) {
             scope.speed = 80;
             scope.setSpeed = function (speed) {
-//                scope.driveSpeed
+                scope.driveSpeed = ctrls[1].drive(speed,'car');
+                console.log(speed);
             };
             scope.isClicked = function () {
-
+                if(ctrls[0].emergencyBrake == true){
+                    ctrls[1].alarm();
+                }
             };
         },
         template: '<div class="col-md-4">' +
             '<input class="form-control" type="number" ng-model="speed"></div>' +
-            '<div class="btn-group"><button class="btn btn-default" ng-click="setSpeed(speed)">Drive!</button>' +
-            '<button class="btn btn-default">Emergency brake!</button></div><h3></h3>'
+            '<div class="btn-group"><button class="btn btn-default" ng-click="setSpeed(speed); isClicked">Drive!</button>' +
+            '<button class="btn btn-default">Emergency brake!</button></div><h3>{{driveSpeed}}</h3>'
 
     };
 });
@@ -79,21 +84,25 @@ app.directive('audi', function () {
 app.directive('jelcz', function () {
     return {
         restrict: 'E',
+        require: ["^bus","^vehicle"],
         controller: function () {
         },
         link: function (scope, element, attrs, ctrls) {
             scope.speed = 12;
             scope.setSpeed = function (speed) {
-//                scope.driveSpeed
+                scope.driveSpeed = ctrls[1].drive(speed,'bus');
+                console.log(speed);
             };
 
             scope.isClicked = function () {
-
+                if(ctrls[0].emergencyBrake == true){
+                    ctrls[1].alarm();
+                }
             };
         },
         template: '<div class="col-md-4"><input class="form-control" type="number" ng-model="speed"></div>' +
             '<div class="btn-group"><button class="btn btn-default" ng-click="setSpeed(speed)">Drive!</button>' +
-            '<button class="btn btn-default">Emergency brake!</button></div><h3></h3>'
+            '<button class="btn btn-default" ng-click="isClicked()">Emergency brake!</button></div><h3>{{driveSpeed}}{{}}</h3>'
 
     };
 });
