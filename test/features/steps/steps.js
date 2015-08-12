@@ -35,7 +35,7 @@ module.exports = function ()
     this.Then(/^I should see "([^"]*)" for "([^"]*)" in "([^"]*)"$/, function (text, number, element, callback)
     {
         number = parseInt(number, 10);
-        expect((fragments(element)().get(number-1)).getText()).to.eventually.equal(text).and.notify(callback);
+        expect((fragments(element)().get(number)).getText()).to.eventually.equal(text).and.notify(callback);
     });
 
 
