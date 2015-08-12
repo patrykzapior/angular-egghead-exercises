@@ -13,14 +13,15 @@
         </h1>
     </div>
     <div class="col-md-4 panel panel-body panel-info text-center">
-        <div ng-repeat="thing in ctrl.list" ng-model="thing" class="btn" ng-click="ctrl.fun(thing)"><p><strong>{{thing}}</strong></p></div>
+        <!--add ng-repeat and ng-click here:-->
+        <div class="btn"><p><strong></strong></p></div>
     </div>
     <div class="col-md-4 panel panel-body panel-info text-center">
-        <p>Message to: {{ctrl.x}}<p>
+        <p>Message to: ... <p>
         <textarea placeholder="Message..." width="500px" style="margin: 0px; width: 354px; height: 104px;"></textarea>
         <button ng-click="ctrl.send()">Send</button>
     </div>
-   </div>
+</div>
 <script src="bower_components/angular/angular.js"></script>
 <script src="fridge.js"></script>
 </body>

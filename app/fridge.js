@@ -13,8 +13,8 @@ mailApp.controller('mailCtrl', function () {
     var click = false;
     var x = '';
 
-    this.fun = function(value){
-            this.x = value;
+    this.display = function(value){
+        this.x = value;
     }
 
 
@@ -23,12 +23,7 @@ mailApp.controller('mailCtrl', function () {
     }
 
     this.send = function(mail){
-        if(this.x === undefined) {
-            alert('Please choose email!');
-        }else {
-            this.message = mail;
-            alert('Mail sended to: ' + this.x);
-        }
+        //complete function
     }
 
 
